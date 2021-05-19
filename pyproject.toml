@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "parametrik"
+version = "0.1.0"
+description = "Parametrized svg drawings"
+authors = ["Tomasz Niedziela-Brach <niedziela.brach@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^3.2.3"
+django-rest-framework = "^0.1.0"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+tox = "^3.23.1"
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
