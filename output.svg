@@ -1,0 +1,18 @@
+<svg baseProfile="full" height="100%" version="1.1" viewBox="-450,-109,900,618" width="100%"
+     xmlns="http://www.w3.org/2000/svg"
+>
+    <defs/>
+    <rect fill="gray" height="182" stroke="black" width="-125" x="-207" y="9"/>
+    <rect fill="gray" height="182" stroke="black" width="-125" x="-207" y="209"/>
+    <rect fill="gray" height="182" stroke="black" width="125" x="207" y="9"/>
+    <rect fill="gray" height="182" stroke="black" width="125" x="207" y="209"/>
+    <rect fill="gray" height="182" stroke="black" width="18" x="-8" y="9"/>
+    <rect fill="gray" height="182" stroke="black" width="18" x="-8" y="209"/>
+    <rect fill="gray" height="182" stroke="black" width="18" x="-350" y="9"/>
+    <rect fill="gray" height="182" stroke="black" width="18" x="-350" y="209"/>
+    <rect fill="gray" height="182" stroke="black" width="18" x="332" y="9"/>
+    <rect fill="gray" height="182" stroke="black" width="18" x="332" y="209"/>
+    <rect fill="gray" height="18" stroke="black" width="700" x="-350" y="391"/>
+    <rect fill="gray" height="18" stroke="black" width="700" x="-350" y="191"/>
+    <rect fill="gray" height="18" stroke="black" width="700" x="-350" y="-9"/>
+</svg>
