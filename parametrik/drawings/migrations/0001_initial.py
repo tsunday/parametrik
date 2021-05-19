@@ -8,25 +8,54 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Point',
+            name="Point",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('x', models.IntegerField()),
-                ('y', models.IntegerField()),
-                ('z', models.IntegerField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("x", models.IntegerField()),
+                ("y", models.IntegerField()),
+                ("z", models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='Line',
+            name="Line",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('end_point', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='drawings.point')),
-                ('start_point', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='drawings.point')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "end_point",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="drawings.point",
+                    ),
+                ),
+                (
+                    "start_point",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="drawings.point",
+                    ),
+                ),
             ],
         ),
     ]
