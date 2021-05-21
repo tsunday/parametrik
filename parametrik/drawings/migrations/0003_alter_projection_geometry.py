@@ -7,13 +7,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('drawings', '0002_projection'),
+        ("drawings", "0002_projection"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='projection',
-            name='geometry',
+            model_name="projection",
+            name="geometry",
             field=django.contrib.gis.db.models.fields.PolygonField(dim=3, srid=4326),
         ),
     ]

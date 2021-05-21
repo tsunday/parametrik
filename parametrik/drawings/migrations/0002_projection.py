@@ -7,16 +7,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('drawings', '0001_initial'),
+        ("drawings", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Projection',
+            name="Projection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('timestamp', models.DateTimeField(auto_now_add=True)),
-                ('geometry', django.contrib.gis.db.models.fields.PolygonField(srid=4326)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("timestamp", models.DateTimeField(auto_now_add=True)),
+                (
+                    "geometry",
+                    django.contrib.gis.db.models.fields.PolygonField(srid=4326),
+                ),
             ],
         ),
     ]
