@@ -2,6 +2,7 @@ version: "3.9"
 services:
   web:
     build: ./parametrik
+    image: local/parametrik-web
     command: python manage.py runserver 0.0.0.0:8000
     environment:
       DJANGO_SETTINGS_MODULE: parametrik.settings_dev
@@ -9,6 +10,8 @@ services:
       - ./parametrik:/code/
     ports:
       - "8000:8000"
+    depends_on:
+      - db
 
   db:
     image: postgis/postgis

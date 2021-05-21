@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  test:
+    image: local/parametrik-web
+    command: python manage.py test
+    depends_on:
+      - db
