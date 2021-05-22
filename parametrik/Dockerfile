@@ -14,4 +14,5 @@ COPY pyproject.toml .
 RUN poetry export --output requirements.txt
 RUN pip install -r requirements.txt
 COPY . .
-CMD gunicorn parametrik.wsgi:application
+
+CMD gunicorn parametrik.wsgi:application -b 0.0.0.0:8000
