@@ -4,7 +4,7 @@ from django.contrib.gis.geos import LinearRing, Polygon
 from drawings.models import Projection
 
 
-class ProjectionTesT(TestCase):
+class ProjectionTest(TestCase):
     def test_create_simple_square(self):
         square = LinearRing(((0, 0, 0), (0, 1, 0), (1, 1, 0), (1, 0, 0), (0, 0, 0)))
         poly = Polygon(square)
