@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.contrib.gis.geos import LinearRing, Polygon
 
 from drawings.models import Projection, CubeCoords, Plane
-from drawings.services import ProjectionService
+from drawings.services import ProjectionService, SVGService
 
 
 class ProjectionTest(TestCase):
@@ -52,5 +52,22 @@ class ProjectionTest(TestCase):
         service = ProjectionService()
 
         projections = service.create_multiple_projection(coord_list)
-        print(projections)
 
+        assert len(projections) == 3
+
+class SVGTest(TestCase):
+    def test_service_should_project_multiple_objects(self):
+        coord_list = [
+            CubeCoords(x1=0, y1=0, z1=0, x2=1, y2=1, z2=3),
+            CubeCoords(x1=1, y1=0, z1=0, x2=3, y2=1, z2=0),
+            CubeCoords(x1=-1, y1=-1, z1=0, x2=0, y2=0, z2=1),
+        ]
+        proj_srv = ProjectionService()
+
+        projections = proj_srv.create_multiple_projection(coord_list)
+        svg_content = SVGService.get_svg_content(projections)
+        print(svg_content)
+
+        assert svg_content.startswith("<svg")
+        assert svg_content.endswith("</svg>")
+        # todo: could check if there are 3 paths
