@@ -10,9 +10,7 @@ from drawings.services import ProjectionService, SVGService
 
 
 class ProjectionCreateView(APIView):
-    permission_classes = [
-        AllowAny,
-    ]
+    permission_classes = [AllowAny]
     renderer_classes = [SVGRenderer]
 
     def post(self, request: Request, *args, **kwargs):
