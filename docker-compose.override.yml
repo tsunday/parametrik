@@ -16,6 +16,8 @@ services:
   test:
     image: local/parametrik-web
     command: python manage.py test
+    volumes:
+      - ./parametrik:/code/
     depends_on:
       - web
       - db

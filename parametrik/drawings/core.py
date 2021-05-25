@@ -6,12 +6,20 @@ from drawings.models import CubeCoords, Plane
 
 
 class CoordsConverter:
-    @staticmethod
-    def get_cube_points_from_coords(coords:CubeCoords, plane: Plane) -> Tuple[Point, ...]:
+    PLANE_POINTS_MAP = {
+        Plane.XY: {"x1", "x2", "y1", "y2"},
+        Plane.YZ: {"y1", "y2", "z1", "z2"},
+        Plane.XZ: {"x1", "x2", "z1", "z2"}
+    }
+
+    def get_cube_points_from_coords(self, coords: CubeCoords, plane: Plane) -> Tuple[Point, ...]:
+        x1, x2, y1, y2 = self.PLANE_POINTS_MAP.get(plane)
         return (
-            Point(coords.x1, coords.y1),
-            Point(coords.x1, coords.y2),
-            Point(coords.x2, coords.y2),
-            Point(coords.x2, coords.y1),
-            Point(coords.x1, coords.y1),
+            Point(getattr(coords, x1), getattr(coords, y1)),
+            Point(getattr(coords, x2), getattr(coords, y1)),
+            Point(getattr(coords, x2), getattr(coords, y2)),
+            Point(getattr(coords, x1), getattr(coords, y2)),
+            Point(getattr(coords, x1), getattr(coords, y1))
         )
+
+

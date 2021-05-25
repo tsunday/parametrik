@@ -6,7 +6,12 @@ from django.contrib.gis.db import models
 
 class Projection(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
+    geometry = models.PolygonField(null=True, blank=True)
+
+
+class ProjectionPart(models.Model):
     geometry = models.PolygonField()
+    projection = models.ForeignKey(Projection, on_delete=models.CASCADE, related_name="parts")
 
 
 @dataclass
