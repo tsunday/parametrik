@@ -55,6 +55,7 @@ class ProjectionTest(TestCase):
 
         assert len(projections) == 3
 
+
 class SVGTest(TestCase):
     def test_service_should_project_multiple_objects(self):
         coord_list = [

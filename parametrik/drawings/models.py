@@ -11,7 +11,9 @@ class Projection(models.Model):
 
 class ProjectionPart(models.Model):
     geometry = models.PolygonField()
-    projection = models.ForeignKey(Projection, on_delete=models.CASCADE, related_name="parts")
+    projection = models.ForeignKey(
+        Projection, on_delete=models.CASCADE, related_name="parts"
+    )
 
 
 @dataclass

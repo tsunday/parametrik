@@ -6,22 +6,22 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('drawings', '0003_alter_projection_geometry'),
+        ("drawings", "0003_alter_projection_geometry"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='line',
-            name='end_point',
+            model_name="line",
+            name="end_point",
         ),
         migrations.RemoveField(
-            model_name='line',
-            name='start_point',
+            model_name="line",
+            name="start_point",
         ),
         migrations.DeleteModel(
-            name='Point',
+            name="Point",
         ),
         migrations.DeleteModel(
-            name='Line',
+            name="Line",
         ),
     ]
