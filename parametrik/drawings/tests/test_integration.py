@@ -1,6 +1,5 @@
-from unittest import TestCase
-
 from django.contrib.gis.geos import LinearRing, Polygon
+from django.test import TestCase
 
 from drawings.models import Projection, CubeCoords, Plane
 from drawings.services import ProjectionService, SVGService
