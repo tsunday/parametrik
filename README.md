@@ -1,6 +1,6 @@
 # Parametrik - parametrized svg drawings
 
-## Setup
+## Setup 
 
 ## Prerequisites
 - [Python](https://www.python.org)
@@ -63,4 +63,26 @@ Because it feels like better option for generating real parametric documents for
   I also considered storing whole product in a single column field (multipolygon in postgis). 
   What is better in this situation?
   
-- 
+- PostGIS provides 3D support but it was quite hard to use it in this case. This is why I choosed
+to store 2D projections instead of whole cubes in the database. However, is it giving any
+  benefits to have 3D representations in this case? Finally our product is the 2D projection
+  to a given plane 🤔
+  
+## Further work
+
+1. Decision regarding storing multiple objects in a single column or staying with 1-M relation
+between `Projections` and `ProjectionsPart` should be made.
+
+1. Moving complex queries with annotation to the `QueryManager` that could provide better
+segregation and simplify service layer.
+   
+1. Provide more elaborated serializer for the API input - it could verify each field and support both
+multiple and single object serialization (now it's handling only multiple objects)
+   
+## My feedback
+
+I started on Wed 19.05.2021 and was putting some bits of work everyday till today - 26.05.2021.
+I spent totaly 10-11 hours for this project. It took some time to find the best tools for that
+and I had to learn a bit about PostGIS. Project setup with that database also took more time than
+usual but finally I played with something new :) It was a very nice and interesting task!
+My wife was also excited because I finally learned how to draw 😅
