@@ -12,10 +12,6 @@
 
 `poetry shell` - activates virtual environment
 
-### How to start production setup (still with development environment variables)
-
-`docker-compose -f docker-compose.yml up`
-
 ### How to start development server and run tests
 
 `docker-compose up`
@@ -32,7 +28,7 @@
 
 I decided to use dockerized setup for the project. It has separate development service configuration.
 For the needs of testing with the dockerized database I also prepared `test` service that uses
-the same object as a `web` API service. I also considered database agnostic tests but in this case, 
+the same image as a `web` API service. I also considered database agnostic tests but in this case, 
 much of the logic is handled by the database itself.
 
 To deal with geometric objects I decided to use PostGIS and configured it to work with Django 
@@ -43,7 +39,7 @@ less error prone. I was also motivated by PostGIS `AsSVG` annotation that could 
 generating SVG images.
 
 During the implementation I realised that the format of SVG output from PostGIS is different 
-than example `output.svg` file but I stayed with that tech stach, because the final wasn't
+than example `output.svg` file but I stayed with that tech stack, because the final result wasn't
 different.
 
 In the code I provided separation between view and core logic. View uses provided services to 
