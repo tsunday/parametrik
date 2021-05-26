@@ -39,7 +39,7 @@ class SVGService:
     def get_svg_content(paths: List[str]) -> str:
         content = (
             '<svg baseProfile="full" height="100%" version="1.1" '
-            'viewBox="-450,-109,900,618" width="100%" xmlns="http://www.w3.org/2000/svg">'
+            'viewBox="-500,-500,1000,1000" width="100%" xmlns="http://www.w3.org/2000/svg">'
         )
         for path in paths:
             content += f'<path d="{path}" fill="gray" stroke="black"/>'

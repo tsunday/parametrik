@@ -1,4 +1,4 @@
-from django.test import TestCase
+from unittest import TestCase
 
 from django.contrib.gis.geos import LinearRing, Polygon
 
@@ -58,14 +58,36 @@ class ProjectionTest(TestCase):
 
 class SVGTest(TestCase):
     def test_service_should_project_multiple_objects(self):
+        """
+        Example input:
+        {
+          "x1": -207,
+          "x2": -332,
+          "y1": 9,
+          "y2": 191,
+          "z1": 0,
+          "z2": 18
+        },
+        {
+          "x1": -207,
+          "x2": -332,
+          "y1": 209,
+          "y2": 391,
+          "z1": 0,
+          "z2": 18
+        }
+        Plane: XY
+        Equivalent output:
+        <rect fill="gray" height="182" stroke="black" width="-125" x="-207" y="9"/>
+        <rect fill="gray" height="182" stroke="black" width="-125" x="-207" y="209"/>
+        """
         coord_list = [
-            CubeCoords(x1=0, y1=0, z1=0, x2=1, y2=1, z2=3),
-            CubeCoords(x1=1, y1=0, z1=0, x2=3, y2=1, z2=0),
-            CubeCoords(x1=-1, y1=-1, z1=0, x2=0, y2=0, z2=1),
+            CubeCoords(x1=-207, y1=9, z1=0, x2=-332, y2=191, z2=18),
+            CubeCoords(x1=-207, y1=209, z1=0, x2=-332, y2=391, z2=18),
         ]
         proj_srv = ProjectionService()
 
-        projections = proj_srv.create_multiple_projection(coord_list)
+        projections = proj_srv.create_multiple_projection(coord_list, plane=Plane.XY)
         svg_content = SVGService.get_svg_content(projections)
         print(svg_content)
 

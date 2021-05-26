@@ -22,3 +22,12 @@ class CoordsConverterTest(TestCase):
 
         assert points[0].x == points[-1].x
         assert points[0].y == points[-1].y
+
+    def test_first_point_with_proper_coordinates(self):
+        coords = CubeCoords(x1=1, y1=2, z1=3, x2=2, y2=4, z2=5)
+
+        points = self.converter.get_cube_points_from_coords(coords, plane=Plane.XY)
+
+        assert points[0].x == 1
+        assert points[0].y == 2
+

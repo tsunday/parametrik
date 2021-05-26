@@ -7,9 +7,9 @@ from drawings.models import CubeCoords, Plane
 
 class CoordsConverter:
     PLANE_POINTS_MAP = {
-        Plane.XY: {"x1", "x2", "y1", "y2"},
-        Plane.YZ: {"y1", "y2", "z1", "z2"},
-        Plane.XZ: {"x1", "x2", "z1", "z2"},
+        Plane.XY: ("x1", "x2", "y1", "y2"),
+        Plane.YZ: ("y1", "y2", "z1", "z2"),
+        Plane.XZ: ("x1", "x2", "z1", "z2"),
     }
 
     def get_cube_points_from_coords(
