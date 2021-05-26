@@ -5,6 +5,7 @@
 ### Prerequisites
 - [Python](https://www.python.org)
 - [Docker](https://www.docker.com/)
+- [Poetry](https://python-poetry.org)
 
 ### How to install for local development
 
