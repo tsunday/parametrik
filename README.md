@@ -1,18 +1,21 @@
 # Parametrik - parametrized svg drawings
 
-## How to install
+## How to install for local development
 
 `poetry install`
 
-## How to run
+## How to start production setup (still with development environment variables)
 
-`poetry run python manage.py runserver 0.0.0.0:8000`
+`docker-compose -f docker-compose.yml up`
+
+## How to start development server and run tests
+`docker-compose up`
 
 ## Testing
 
-`pytest`
+`docker-compose up test`
 
-## QA checks
+## QA checks - black, flake8, xenon
 
 `tox`
 

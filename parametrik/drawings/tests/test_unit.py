@@ -30,4 +30,3 @@ class CoordsConverterTest(TestCase):
 
         assert points[0].x == 1
         assert points[0].y == 2
-
