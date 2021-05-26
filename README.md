@@ -2,7 +2,7 @@
 
 ## Setup 
 
-## Prerequisites
+### Prerequisites
 - [Python](https://www.python.org)
 - [Docker](https://www.docker.com/)
 
