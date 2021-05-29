@@ -1,9 +1,6 @@
-from typing import List
-
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 
-from drawings.models import CubeCoords
+from drawings.models import CubeCoords, Plane
 
 
 class CubeCoordSerializer(serializers.Serializer):
@@ -17,3 +14,13 @@ class CubeCoordSerializer(serializers.Serializer):
     def to_internal_value(self, data: dict) -> CubeCoords:
         coords_params = super().to_internal_value(data)
         return CubeCoords(**coords_params)
+
+
+class PlaneField(serializers.ChoiceField):
+    def to_internal_value(self, data):
+        return Plane(data)
+
+
+class ProjectionSerializer(serializers.Serializer):
+    geometry = CubeCoordSerializer(many=True)
+    plane = PlaneField(choices=["XY", "YZ", "XZ"])

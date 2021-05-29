@@ -8,9 +8,8 @@ from drawings.models import Projection, CubeCoords, Plane, ProjectionPart
 
 
 class ProjectionService:
-    def create_single_projection(
-        self, coords: CubeCoords, plane: Plane = Plane.XY
-    ) -> str:
+    @staticmethod
+    def create_single_projection(coords: CubeCoords, plane: Plane = Plane.XY) -> str:
         converter = CoordsConverter()
         points = converter.get_cube_points_from_coords(coords, plane)
         rect = Polygon(points)
@@ -19,8 +18,9 @@ class ProjectionService:
             Projection.objects.annotate(svg=AsSVG("geometry")).get(id=projection.id).svg
         )
 
+    @staticmethod
     def create_multiple_projection(
-        self, coord_list: List[CubeCoords], plane: Plane = Plane.XY
+        coord_list: List[CubeCoords], plane: Plane = Plane.XY
     ) -> List[str]:
         converter = CoordsConverter()
         polygons = [
