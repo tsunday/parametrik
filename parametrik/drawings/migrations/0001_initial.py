@@ -9,24 +9,54 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Projection',
+            name="Projection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('timestamp', models.DateTimeField(auto_now_add=True)),
-                ('geometry', django.contrib.gis.db.models.fields.PolygonField(blank=True, null=True, srid=4326)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("timestamp", models.DateTimeField(auto_now_add=True)),
+                (
+                    "geometry",
+                    django.contrib.gis.db.models.fields.PolygonField(
+                        blank=True, null=True, srid=4326
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ProjectionPart',
+            name="ProjectionPart",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('geometry', django.contrib.gis.db.models.fields.PolygonField(srid=4326)),
-                ('projection', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='parts', to='drawings.projection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "geometry",
+                    django.contrib.gis.db.models.fields.PolygonField(srid=4326),
+                ),
+                (
+                    "projection",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="parts",
+                        to="drawings.projection",
+                    ),
+                ),
             ],
         ),
     ]
