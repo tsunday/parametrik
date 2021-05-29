@@ -11,6 +11,10 @@ class ProjectionTest(TestCase):
 
         projection = service.create_single_projection(coords)
 
+        # SVG path should start with "Move" (M) operation
+        # and in this particular case where we're dealing with
+        # closed shapes it should be ending with "Close path" (Z) command
+        # see: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
         assert projection.startswith("M")
         assert projection.endswith("Z")
 
