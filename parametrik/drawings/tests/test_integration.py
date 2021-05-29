@@ -52,7 +52,7 @@ class ProjectionTest(TestCase):
 
         projections = service.create_multiple_projection(coord_list)
 
-        assert len(projections) == 3
+        assert len(projections) == len(coord_list)
 
 
 class SVGTest(TestCase):
