@@ -75,8 +75,8 @@ between `Projections` and `ProjectionsPart` should be made.
 1. Moving complex queries with annotation to the `QueryManager` that could provide better
 segregation and simplify service layer.
    
-1. Provide more elaborated serializer for the API input - it could verify each field and support both
-multiple and single object serialization (now it's handling only multiple objects)
+1. ~~Provide more elaborated serializer for the API input - it could verify each field and support both
+multiple and single object serialization (now it's handling only multiple objects)~~
    
 ## My feedback
 
