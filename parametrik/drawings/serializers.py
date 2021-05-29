@@ -6,13 +6,14 @@ from rest_framework.exceptions import ValidationError
 from drawings.models import CubeCoords
 
 
-class CubeCoordSerializer(serializers.BaseSerializer):
-    def to_internal_value(self, data: dict) -> List[CubeCoords]:
-        coords_list = []
-        for coords_input in data:
-            if not {"x1", "x2", "y1", "y2", "z1", "z2"}.issubset(
-                set(coords_input.keys())
-            ):
-                raise ValidationError("Missing required fields")
-            coords_list.append(CubeCoords(**coords_input))
-        return coords_list
+class CubeCoordSerializer(serializers.Serializer):
+    x1 = serializers.IntegerField()
+    x2 = serializers.IntegerField()
+    y1 = serializers.IntegerField()
+    y2 = serializers.IntegerField()
+    z1 = serializers.IntegerField()
+    z2 = serializers.IntegerField()
+
+    def to_internal_value(self, data: dict) -> CubeCoords:
+        coords_params = super().to_internal_value(data)
+        return CubeCoords(**coords_params)
