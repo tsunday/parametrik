@@ -1,5 +1,6 @@
 import logging
 
+from django.template.loader import render_to_string
 from rest_framework.permissions import AllowAny
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -7,7 +8,7 @@ from rest_framework.views import APIView
 
 from drawings.renderers import SVGRenderer
 from drawings.serializers import ProjectionSerializer
-from drawings.services import ProjectionService, SVGService
+from drawings.services import ProjectionService
 
 logger = logging.getLogger("django")
 
@@ -26,4 +27,5 @@ class ProjectionCreateView(APIView):
 
         projections = projection_service.create_multiple_projection(coords, plane=plane)
 
-        return Response(SVGService.get_svg_content(projections))
+        output_file = render_to_string("projection_output.svg", {"paths": projections})
+        return Response(output_file)
