@@ -1,3 +1,6 @@
+import random
+import re
+
 from django.test import TestCase
 
 from drawings.models import CubeCoords, Plane
@@ -19,12 +22,13 @@ class ProjectionTest(TestCase):
         assert projection.endswith("Z")
 
     def test_service_should_project_to_xz(self):
-        coords = CubeCoords(x1=0, y1=0, z1=0, x2=1, y2=1, z2=3)
+        depth = random.randrange(100)
+        coords = CubeCoords(x1=0, y1=0, z1=0, x2=1, y2=1, z2=depth)
         service = ProjectionService()
 
-        projection = service.create_single_projection(coords, plane=Plane.YZ)
+        projection = service.create_single_projection(coords, plane=Plane.XZ)
 
-        assert "3" in projection
+        assert str(depth) in projection
 
     def test_service_should_project_multiple_objects(self):
         coord_list = [
@@ -72,8 +76,7 @@ class SVGTest(TestCase):
 
         projections = proj_srv.create_multiple_projection(coord_list, plane=Plane.XY)
         svg_content = SVGService.get_svg_content(projections)
-        print(svg_content)
 
         assert svg_content.startswith("<svg")
         assert svg_content.endswith("</svg>")
-        # todo: could check if there are 3 paths
+        assert len(re.findall("path", svg_content)) == len(coord_list)
